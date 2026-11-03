@@ -1,15 +1,11 @@
 # TerminalWorld
 
-**TerminalWorld** is a scalable data engine that automatically reverse-engineers high-fidelity evaluation tasks from in-the-wild terminal recordings. Processing 80,870 asciinema recordings, it yields a benchmark of **1,530 validated terminal tasks** spanning 19 real-world categories and 1,280 unique commands — authentic and scalable by construction.
+**TerminalWorld** is a scalable data engine that automatically reverse-engineers high-fidelity evaluation tasks from in-the-wild terminal recordings. Processing 80,870 asciinema recordings, it yields a benchmark of **1,530 validated terminal tasks** spanning 18 real-world categories and 1,280 unique commands — authentic and scalable by construction.
 
 > **Paper:** [*TerminalWorld: Benchmarking Agents on Real-World Terminal Tasks*](https://arxiv.org/pdf/2605.22535)  
-> **Code:** [https://github.com/EuniAI/TerminalWorld](https://github.com/EuniAI/TerminalWorld)  
-> **Dataset:** [https://huggingface.co/datasets/EuniAI/TerminalWorld](https://huggingface.co/datasets/EuniAI/TerminalWorld)  
+> **Code:** [https://github.com/terminalworld/TerminalWorld](https://github.com/terminalworld/TerminalWorld)  
+> **Dataset:** [https://huggingface.co/datasets/terminalworld/TerminalWorld](https://huggingface.co/datasets/terminalworld/TerminalWorld)  
 > **Website:** [https://terminalworld.ai/](https://terminalworld.ai/)
-
-> **Note:**  
-> 🔒 The `main` branch is frozen as the stable release for external review.  
-> 🚀 Active development and latest updates are on the [`dev`](../../tree/dev) branch.
 
 ---
 
@@ -153,10 +149,10 @@ See the paper's ethics section for a full discussion of copyright compliance and
 If you use TerminalWorld in your research, please cite:
 
 ```bibtex
-@article{chu2026terminalworld,
-  title   = {TerminalWorld: Benchmarking Agents on Real-World Terminal Tasks},
-  author  = {Zhaoyang Chu and Jiarui Hu and Xingyu Jiang and Pengyu Zou and Han Li and Chao Peng and Peter O'Hearn and Earl T. Barr and Mark Harman and Federica Sarro and He Ye},
-  journal = {arXiv preprint arXiv:2605.22535},
-  year    = {2026}
+@inproceedings{chu2026terminalworld,
+  title     = {TerminalWorld: Benchmarking Agents on Real-World Terminal Tasks},
+  author    = {Zhaoyang Chu and Jiarui Hu and Xingyu Jiang and Pengyu Zou and Han Li and Chao Peng and Peter O'Hearn and Earl T. Barr and Mark Harman and Federica Sarro and He Ye},
+  booktitle = {NeurIPS 2026 Evaluations and Datasets Track},
+  year      = {2026}
 }
 ```
