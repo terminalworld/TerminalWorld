@@ -1,11 +1,21 @@
-# TerminalWorld
+<div align="center">
+
+<h1>TerminalWorld</h1>
+<h3>Benchmarking Agents on Real-World Terminal Tasks</h3>
+
+<p>NeurIPS 2026 · Evaluations and Datasets Track</p>
+
+<a href="https://arxiv.org/abs/2605.22535"><img src="https://img.shields.io/badge/Paper-arXiv-B31B1B?style=flat-square&amp;logo=arxiv&amp;logoColor=white" alt="Paper on arXiv"></a>
+<a href="https://terminalworld.ai/"><img src="https://img.shields.io/badge/Website-TerminalWorld-2563EB?style=flat-square" alt="TerminalWorld website"></a>
+<a href="https://huggingface.co/datasets/terminalworld/TerminalWorld"><img src="https://img.shields.io/badge/Dataset-Hugging_Face-EAB308?style=flat-square&amp;logo=huggingface&amp;logoColor=white" alt="Dataset on Hugging Face"></a>
+
+</div>
 
 **TerminalWorld** is a scalable data engine that automatically reverse-engineers high-fidelity evaluation tasks from in-the-wild terminal recordings. Processing 80,870 asciinema recordings, it yields a benchmark of **1,530 validated terminal tasks** spanning 18 real-world categories and 1,280 unique commands — authentic and scalable by construction.
 
-> **Paper:** [*TerminalWorld: Benchmarking Agents on Real-World Terminal Tasks*](https://arxiv.org/pdf/2605.22535)  
-> **Code:** [https://github.com/terminalworld/TerminalWorld](https://github.com/terminalworld/TerminalWorld)  
-> **Dataset:** [https://huggingface.co/datasets/terminalworld/TerminalWorld](https://huggingface.co/datasets/terminalworld/TerminalWorld)  
-> **Website:** [https://terminalworld.ai/](https://terminalworld.ai/)
+<p align="center">
+  <img src="assets/pipeline.png" alt="TerminalWorld data engine: collecting human recordings, synthesizing terminal tasks, reproducing executable environments, and generating test suites." width="100%">
+</p>
 
 ---
 
