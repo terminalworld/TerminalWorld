@@ -1,7 +1,6 @@
 <div align="center">
 
-<h1>TerminalWorld</h1>
-<h3>Benchmarking Agents on Real-World Terminal Tasks</h3>
+<h1>TerminalWorld: Benchmarking Agents on Real-World Terminal Tasks</h1>
 
 <p>NeurIPS 2026 · Evaluations and Datasets Track</p>
 
