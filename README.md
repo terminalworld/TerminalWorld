@@ -10,7 +10,7 @@
 
 </div>
 
-**TerminalWorld** is a scalable data engine that automatically reverse-engineers high-fidelity evaluation tasks from in-the-wild terminal recordings. Processing 80,870 asciinema recordings, it yields a benchmark of **1,530 validated terminal tasks** spanning 18 real-world categories and 1,280 unique commands — authentic and scalable by construction.
+**TerminalWorld** is a scalable data engine that automatically reverse-engineers high-fidelity evaluation tasks from in-the-wild terminal recordings. Processing 80,870 asciinema recordings, it yields a benchmark of **1,530 validated terminal tasks** spanning 18 real-world categories and 1,280 unique commands. TerminalWorld is authentic and scalable by construction.
 
 <p align="center">
   <img src="assets/pipeline.png" alt="TerminalWorld data engine: collecting human recordings, synthesizing terminal tasks, reproducing executable environments, and generating test suites." width="100%">
@@ -83,26 +83,26 @@ TerminalWorld/
 
 ## Pipeline Details
 
-### Stage 1 — Data Retrieval & Filtering
+### Stage 1: Data Retrieval & Filtering
 
 We index asciinema's public explore feeds and download the plain-text transcript (`recording.txt`) and metadata (`info.json`) for each recording. Raw cast files and generated media are intentionally **not** collected, in accordance with asciinema's terms of service.
 
 Recordings are then filtered by five sequential criteria:
-1. **Privacy & Safety** — exclude PII, exposed credentials, and malicious/destructive commands (`detect_pii.py`)
-2. **CLI-only** — discard recordings that invoke TUI applications (vim, nano, htop, …) (`classify_tui.py`)
-3. **Docker reproducibility** — remove recordings dependent on inaccessible URLs, Windows environments, or proprietary software (`detect_external_urls.py`)
-4. **Minimum length** — eliminate excessively short or aborted sessions (`analyze_duration.py`)
-5. **LLM quality scoring** — filter opaque or purely exploratory sessions using a two-stage scoring framework: rule-based feasibility pre-check followed by LLM scoring on three dimensions — *state-action alignment*, *task complexity*, and *signal clarity* (`score_value.py`)
+1. **Privacy & Safety**: exclude PII, exposed credentials, and malicious/destructive commands (`detect_pii.py`)
+2. **CLI-only**: discard recordings that invoke TUI applications (vim, nano, htop, …) (`classify_tui.py`)
+3. **Docker reproducibility**: remove recordings dependent on inaccessible URLs, Windows environments, or proprietary software (`detect_external_urls.py`)
+4. **Minimum length**: eliminate excessively short or aborted sessions (`analyze_duration.py`)
+5. **LLM quality scoring**: filter opaque or purely exploratory sessions using a two-stage scoring framework: rule-based feasibility pre-check followed by LLM scoring on three dimensions: *state-action alignment*, *task complexity*, and *signal clarity* (`score_value.py`)
 
 **Result:** 80,870 → **9,492** high-quality recordings.
 
-### Stage 2 — Task Synthesis
+### Stage 2: Task Synthesis
 
 An LLM distills each transcript into two artifacts:
 - **Instruction** (`instruction.md`): outcome-oriented natural language goal; describes *what* to achieve, never *how*; specifies required output paths and formats.
 - **Reference solution** (`solve.sh`): clean, executable bash script extracted from the transcript; redirects final results to explicit file paths (e.g., `/app/result.txt`) for deterministic verification.
 
-### Stage 3 — Environment Reproduction
+### Stage 3: Environment Reproduction
 
 An LLM agent synthesizes a `Dockerfile` (and `docker-compose.yaml` for multi-service tasks) by inferring dependencies from the reference solution. If the recording includes an external repository link, the agent clones and scans it to infer precise requirements. Fake binaries, stubbed dependencies, and bypasses of real software installation are explicitly prohibited.
 
@@ -110,7 +110,7 @@ The agent then enters an execution-feedback loop: build the image → parse buil
 
 **Result:** 9,492 → **5,035** reproduced environments.
 
-### Stage 4 — Test Suite Generation & Validation
+### Stage 4: Test Suite Generation & Validation
 
 The agent captures pre- and post-execution filesystem snapshots in the Docker environment and generates state-based test assertions calibrated to the actual final state. Tests target persistent artifacts (file existence, content hashes, structured outputs) and avoid brittle non-deterministic checks (timestamps, process IDs).
 
@@ -133,9 +133,9 @@ A task is admitted only if all three trials pass simultaneously. Failed suites a
 | | Full Set | Verified Subset |
 |--|--|--|
 | **Tasks** | 1,530 | 200 |
-| **Categories** |  |  |
-| **Unique commands** | 1,280 | — |
-| **Commands absent from Terminal-Bench** | 91% | — |
+| **Categories** | 18 | 18 |
+| **Unique commands** | 1,280 | Not reported |
+| **Commands absent from Terminal-Bench** | 91% | Not reported |
 | **Human review** | Automated validation | ✓ (4 expert annotators) |
 
 The **Verified** subset of 200 tasks was manually reviewed by four authors with 3+ years of terminal development experience. Each task was executed end-to-end inside the Docker environment to verify functional correctness and artifact alignment.
@@ -148,7 +148,7 @@ Benchmarking on the Verified subset across 8 frontier LLMs and 6 agent framework
 
 - We collect only publicly listed `.txt` transcripts and their coupled metadata via asciinema's standard download links, in full compliance with `robots.txt`.
 - Raw `.cast` files and generated media are **never downloaded or redistributed**.
-- The released benchmark contains only synthesized artifacts (instructions, environments, tests) with hyperlinks back to the original recordings — no original transcripts are redistributed.
+- The released benchmark contains only synthesized artifacts (instructions, environments, tests) with hyperlinks back to the original recordings. No original transcripts are redistributed.
 - Recordings are filtered for PII, credentials, and malicious content before any synthesis occurs.
 
 See the paper's ethics section for a full discussion of copyright compliance and the right-to-be-forgotten architecture.
