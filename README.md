@@ -2,7 +2,7 @@
 
 <h1>TerminalWorld: Benchmarking Agents on Real-World Terminal Tasks</h1>
 
-<p>NeurIPS 2026 · Evaluations and Datasets Track</p>
+<p><strong>NeurIPS 2026 · Evaluations and Datasets Track</strong></p>
 
 <a href="https://arxiv.org/abs/2605.22535"><img src="https://img.shields.io/badge/Paper-arXiv-B31B1B?style=flat-square&amp;logo=arxiv&amp;logoColor=white" alt="Paper on arXiv"></a>
 <a href="https://terminalworld.ai/"><img src="https://img.shields.io/badge/Website-TerminalWorld-2563EB?style=flat-square" alt="TerminalWorld website"></a>
